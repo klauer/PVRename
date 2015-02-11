@@ -8,7 +8,7 @@ Usage:
 
 Options:
     --diff=DIFF    Diff program to use in dry-run mode [default: diff]
-    --diffargs=Y   Diff arguments [default: -y]
+    --diffargs=Y   Diff arguments [default: -u]
 
 List will simply find the db/template files and list all of the records
 in the path.
@@ -170,7 +170,7 @@ def convert_case(fn, camel=True, delims=[], caps_delim=DEF_CAPS_DELIM):
 
 
 def read_conv_file(fn):
-    line_re = re.compile('^(.*)\s+(.*)$')
+    line_re = re.compile('^(\S+)\s+(\S+)$')
     for line in open(fn, 'rt').readlines():
         line = line.strip()
         if not line:
